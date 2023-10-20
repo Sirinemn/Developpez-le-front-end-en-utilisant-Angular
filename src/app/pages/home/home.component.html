@@ -26,7 +26,8 @@
     </section>
 </main>
 <hr />
-<ul *ngFor="let user of olympics$|async">
-<li >{{ user.id}}</li>
+<ul>
+<!--<ul *ngFor="let user of participation$|async">-->
+<li >{{ countryName$|async}} and total ={{somme|async}}</li>
 </ul>
 <p>{{ (olympics$ | async)?.length}} data loaded</p>
