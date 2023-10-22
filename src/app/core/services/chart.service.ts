@@ -1,9 +1,5 @@
 import {Chart} from 'chart.js/auto';
-import { OlympicCountry } from '../models/Olympic';
-import { Observable,  } from 'rxjs';
-import { Participation } from 'src/app/core/models/Participation';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
@@ -11,7 +7,7 @@ import { map } from 'rxjs/operators';
 export class ChartService {
   public chart: any;
 
-  createChart(country:String[],medal:number[]){
+  createPieChart(country:String[],medal:number[]){
 
     this.chart = new Chart("MyChart", {
       type: 'pie', //this denotes tha type of chart
@@ -38,6 +34,8 @@ export class ChartService {
 
     });
   }
+  createLineChart(labeldata: any, realdata: any, colordata: any) {
+
   }
 
-
+}

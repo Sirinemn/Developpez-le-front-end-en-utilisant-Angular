@@ -42,5 +42,9 @@ export class OlympicService {
   return this.loadInitialData().pipe(
     map(value=>value.flatMap(d=>d.country)))
   }
-
+  getCountryById(Id:number){
+    return this.getOlympics().pipe(
+      map(value=>value?.flatMap(d=>d.id===Id))
+    )
+  }
 }
