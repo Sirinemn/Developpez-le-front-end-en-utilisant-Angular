@@ -32,19 +32,4 @@ export class OlympicService {
   getOlympics() {
     return this.olympics$.asObservable();
   }
-  getParticipation():Observable<Participation[]>{
-   return this.loadInitialData().pipe(
-    map(value=>value.flatMap(d=>d.participations))
-   )
- 
-  }
-  getCountryNames():Observable<string[]>{
-  return this.loadInitialData().pipe(
-    map(value=>value.flatMap(d=>d.country)))
-  }
-  getCountryById(Id:number){
-    return this.getOlympics().pipe(
-      map(value=>value?.flatMap(d=>d.id===Id))
-    )
-  }
 }

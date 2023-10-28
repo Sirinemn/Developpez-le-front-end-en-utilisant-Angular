@@ -16,13 +16,12 @@ export class HomeComponent implements OnInit {
   public participation$: Observable<Participation[]|null>= of(null);
   constructor(private olympicService: OlympicService) {}
   public chart: any;
-   somme!:any;
+  
 
 
   ngOnInit(): void {
     this.olympics$ = this.olympicService.getOlympics();
-    this.participation$=this.olympicService.getParticipation();
-    this.countryName$=this.olympicService.getCountryNames();
+   
  
   }
   
