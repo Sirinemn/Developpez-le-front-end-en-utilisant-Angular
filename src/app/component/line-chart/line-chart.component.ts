@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {ChartService} from 'src/app/core/services/chart.service'
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { OlympicCountry } from 'src/app/core/models/Olympic';
 import { ActivatedRoute } from '@angular/router';
-
+import { Location } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.scss']
 })
-export class LineChartComponent implements OnInit {
+export class LineChartComponent implements OnInit,  OnDestroy {
 
   medals_number: number[] = [];
   years: number[] = [];
@@ -19,8 +20,10 @@ export class LineChartComponent implements OnInit {
   public numberOfEntries: Number = 0;
   public totalNumberOfAthletes: Number = 0;
   public totalNumberOfMedals: Number = 0;
+  private httpSubscription!: Subscription;
 
-  constructor(private chartService:ChartService,private olympicService:OlympicService,private activatedRoute: ActivatedRoute){
+  constructor(private chartService:ChartService,private olympicService:OlympicService,
+    private activatedRoute: ActivatedRoute,private location: Location){
   };
 
   ngOnInit(): void {
@@ -31,9 +34,12 @@ export class LineChartComponent implements OnInit {
     this.chartData();
 
   }
+  cancel() {
+    this.location.back(); // <-- go back to previous location on cancel
+  }
   
   chartData(){
-
+    this.httpSubscription = 
     this.olympicService.loadInitialData().subscribe(
       result =>{
         result.filter((element) => element.country === this.selectedCountry).map(x => this.finalCountry=x);
@@ -54,6 +60,10 @@ export class LineChartComponent implements OnInit {
       )
     
   }
-
+  ngOnDestroy(): void {
+  if (this.httpSubscription) {
+    this.httpSubscription.unsubscribe();
+  }
+}
 }
   

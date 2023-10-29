@@ -23,12 +23,12 @@ export class ChartService {
     label: '🏅',
     data: medal,
     backgroundColor: [
-      'red',
-      'pink',
-      'green',
-	  'yellow',
-      'orange',
-      'blue',			
+      '#5D9D08',
+      '#9D7A08',
+      '#9D2E08',
+	    '#08869D',
+      '#30089D',
+      '#93089D',			
     ],
     hoverOffset: 10
   }],
@@ -39,16 +39,11 @@ export class ChartService {
         onClick: (e) => {
           const points = this.pieChart.getElementsAtEventForMode(e, 'nearest', {
             intersect: true}, true);
-            //console.log(points)
             if(points.length){
               const firstPoint = points[0];
-              //console.log(firstPoint);
               const dataset = firstPoint.datasetIndex;
               const datapoint = firstPoint.index;
-              //console.log(datapoint);
-              //console.log(this.pieChart.data.labels[datapoint])
               this.countryName = this.pieChart.data.labels[datapoint];
-              //console.log(this.countryName)
               this.router.navigateByUrl(`page/${this.countryName}`);
 
             }

@@ -1,6 +1,7 @@
-import { Component,OnInit} from '@angular/core';
+import { Component,OnDestroy,OnInit} from '@angular/core';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import {ChartService} from 'src/app/core/services/chart.service'
+import { Subscription } from 'rxjs';
 
 
 
@@ -10,13 +11,14 @@ import {ChartService} from 'src/app/core/services/chart.service'
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss']
 })
-export class PieChartComponent implements OnInit {
+export class PieChartComponent implements OnInit, OnDestroy {
   
   medals: number[] = [];
   list_country: string[] = [];
   num_medal: number[] = [];
   public numberOfCountries: number = 0;
   public numberOfJo: number = 0;
+  private httpSubscription!: Subscription;
   
   constructor(private chartService:ChartService,private olympicService:OlympicService){};
 
@@ -25,6 +27,7 @@ export class PieChartComponent implements OnInit {
   }
 
   chartData(){
+      this.httpSubscription=
       this.olympicService.loadInitialData().subscribe(
       result => {
         let sommeByCountry = new Map();
@@ -45,8 +48,14 @@ export class PieChartComponent implements OnInit {
       }
     )
   }
-  
+  ngOnDestroy() {
+    if (this.httpSubscription) {
+      this.httpSubscription.unsubscribe();
+    }
+  }
 }
+  
+
   
   
   
