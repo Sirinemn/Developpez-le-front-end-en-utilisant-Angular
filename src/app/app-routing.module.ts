@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './component/home/home.component';
+import { HomeComponent } from './pages/not-found/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { LineChartComponent } from './component/line-chart/line-chart.component';
 
