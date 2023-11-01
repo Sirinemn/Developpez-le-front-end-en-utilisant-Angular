@@ -11,11 +11,13 @@ import { NgChartsModule} from 'ng2-charts';
 import { HeaderComponent } from './component/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MainComponent } from './component/main/main.component';
-//import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent, PieChartComponent, LineChartComponent, HeaderComponent, MainComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule,NgChartsModule, FontAwesomeModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule,NgChartsModule, FontAwesomeModule, ToastrModule.forRoot({
+    timeOut: 10000,
+    positionClass: "toast-top-right",
+  })],
   providers: [],
   bootstrap: [AppComponent],
 })

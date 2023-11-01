@@ -1,4 +1,4 @@
-import {Chart} from 'chart.js/auto';
+import { Chart} from 'chart.js/auto';
 import { Injectable } from '@angular/core';
 import { Router} from '@angular/router';
 
@@ -6,10 +6,10 @@ import { Router} from '@angular/router';
     providedIn: 'root',
   })
 export class ChartService {
-  public pieChart: any;
-  public lineChart: any;
+  public pieChart: any ;
+  public lineChart: any; 
   public countryName: String = "";
-  constructor(  private router: Router){};
+  constructor(private router: Router){ };
 
 
   createPieChart(countries: String[],medal: number[]){
@@ -37,11 +37,9 @@ export class ChartService {
         aspectRatio:2.5,
         responsive:true,
         onClick: (e) => {
-          const points = this.pieChart.getElementsAtEventForMode(e, 'nearest', {
-            intersect: true}, true);
+          const points = this.pieChart.getElementsAtEventForMode(e, 'nearest', { intersect: true}, true);
             if(points.length){
               const firstPoint = points[0];
-              const dataset = firstPoint.datasetIndex;
               const datapoint = firstPoint.index;
               this.countryName = this.pieChart.data.labels[datapoint];
               this.router.navigateByUrl(`page/${this.countryName}`);
