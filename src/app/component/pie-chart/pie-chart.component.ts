@@ -15,6 +15,7 @@ export class PieChartComponent implements OnInit, OnDestroy {
   public numberOfCountries: number = 0;
   public numberOfJo: number = 0;
   private httpSubscription!: Subscription;
+  public errorMessage: string ="";
 
   constructor(
     private chartService: ChartService,
@@ -29,24 +30,26 @@ export class PieChartComponent implements OnInit, OnDestroy {
     this.httpSubscription = this.olympicService
       .loadInitialData()
       .subscribe((result) => {
-        let sommeByCountry = new Map();
+        let medalByCountry = new Map();
 
         for (let i = 0; i < result.length; i++) {
           this.numberOfJo += result[i].participations.length;
           let list_medal = result[i].participations.map((m) => m.medalsCount);
-          let sum = list_medal.reduce(
-            (accumulator, currentValue) => accumulator + currentValue,
-            0
+          let sumMedal = list_medal.reduce(
+            (accumulator, currentValue) => accumulator + currentValue, 0
           );
-          sommeByCountry.set(result[i].country, sum);
+          medalByCountry.set(result[i].country, sumMedal);
         }
 
-        sommeByCountry.forEach((value: number, key: string) => {
+        medalByCountry.forEach((value: number, key: string) => {
           this.num_medal.push(value);
           this.list_country.push(key);
         });
         this.numberOfCountries = this.list_country.length;
         this.chartService.createPieChart(this.list_country, this.num_medal);
+      }, (error) =>{
+        this.errorMessage = error;
+        console.log(error);
       });
   }
   ngOnDestroy() {
