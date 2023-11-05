@@ -50,6 +50,7 @@ export class PieChartComponent implements OnInit, OnDestroy {
       }, (error) =>{
         this.errorMessage = error;
         console.log(error);
+        debugger;
       });
   }
   ngOnDestroy() {

@@ -1,3 +1,5 @@
+<div *ngIf="errorMessage" class="text-danger">{{errorMessage}} </div>
+
 <div *ngIf="!errorMessage">
 <div class="titre" >
     <h2> Medals per Country</h2>
@@ -9,3 +11,4 @@
 <div class="chart">
 <canvas  id="MyChart" ></canvas> 
 </div>
+
