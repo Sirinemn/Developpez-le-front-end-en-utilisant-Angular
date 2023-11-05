@@ -11,12 +11,10 @@ import { NgChartsModule} from 'ng2-charts';
 import { HeaderComponent } from './component/header/header.component';
 import { MainComponent } from './component/main/main.component';
 import { FooterComponent } from './component/footer/footer.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NotFoundComponent, PieChartComponent, LineChartComponent, HeaderComponent, MainComponent, FooterComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule,NgChartsModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule,NgChartsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
