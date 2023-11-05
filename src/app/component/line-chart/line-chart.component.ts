@@ -21,6 +21,7 @@ export class LineChartComponent implements OnInit, OnDestroy {
   public totalNumberOfMedals: Number = 0;
   private httpSubscription!: Subscription;
 
+
   constructor(
     private chartService: ChartService,
     private olympicService: OlympicService,
@@ -67,6 +68,8 @@ export class LineChartComponent implements OnInit, OnDestroy {
           0
         );
         this.numberOfEntries = this.finalCountry.participations.length;
+      }, (error) =>{
+        console.log(error);
       });
   }
   ngOnDestroy(): void {
