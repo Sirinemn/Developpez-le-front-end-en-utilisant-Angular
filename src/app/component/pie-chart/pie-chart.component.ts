@@ -15,7 +15,6 @@ export class PieChartComponent implements OnInit, OnDestroy {
   public numberOfCountries: number = 0;
   public numberOfJo: number = 0;
   private httpSubscription!: Subscription;
-  public errorMessage: string ="";
 
   constructor(
     private chartService: ChartService,
@@ -47,9 +46,6 @@ export class PieChartComponent implements OnInit, OnDestroy {
         });
         this.numberOfCountries = this.list_country.length;
         this.chartService.createPieChart(this.list_country, this.num_medal);
-      }, (error) =>{
-        this.errorMessage = error;
-        console.log(error);
       });
   }
   ngOnDestroy() {
