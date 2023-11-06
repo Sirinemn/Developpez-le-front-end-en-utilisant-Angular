@@ -10,8 +10,8 @@ import { Subscription } from 'rxjs';
 })
 export class PieChartComponent implements OnInit, OnDestroy {
   medals: number[] = [];
-  list_country: string[] = [];
-  num_medal: number[] = [];
+  listCountry: string[] = [];
+  numMedal: number[] = [];
   public numberOfCountries: number = 0;
   public numberOfJo: number = 0;
   private httpSubscription!: Subscription;
@@ -34,19 +34,19 @@ export class PieChartComponent implements OnInit, OnDestroy {
 
         for (let i = 0; i < result.length; i++) {
           this.numberOfJo += result[i].participations.length;
-          let list_medal = result[i].participations.map((m) => m.medalsCount);
-          let sumMedal = list_medal.reduce(
+          let listMedal = result[i].participations.map((m) => m.medalsCount);
+          let sumMedal = listMedal.reduce(
             (accumulator, currentValue) => accumulator + currentValue, 0
           );
           medalByCountry.set(result[i].country, sumMedal);
         }
 
         medalByCountry.forEach((value: number, key: string) => {
-          this.num_medal.push(value);
-          this.list_country.push(key);
+          this.numMedal.push(value);
+          this.listCountry.push(key);
         });
-        this.numberOfCountries = this.list_country.length;
-        this.chartService.createPieChart(this.list_country, this.num_medal);
+        this.numberOfCountries = this.listCountry.length;
+        this.chartService.createPieChart(this.listCountry, this.numMedal);
       }, (error) =>{
         this.errorMessage = error;
         console.log(error);
