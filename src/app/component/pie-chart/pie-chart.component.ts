@@ -49,8 +49,7 @@ export class PieChartComponent implements OnInit, OnDestroy {
         this.chartService.createPieChart(this.listCountry, this.numMedal);
       }, (error) =>{
         this.errorMessage = error;
-        console.log(error);
-        debugger;
+  
       });
   }
   ngOnDestroy() {

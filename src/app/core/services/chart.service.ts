@@ -8,15 +8,15 @@ import { Router } from '@angular/router';
 export class ChartService {
   public pieChart: any;
   public lineChart: any;
-  public countryName: String = '';
+  public countryName: string = '';
   constructor(private router: Router) {}
 
-  createPieChart(countries: String[], medal: number[]) {
+  createPieChart(countries: string[], medal: number[]) {
+    
     this.pieChart = new Chart('MyChart', {
-      type: 'pie', //this denotes tha type of chart
+      type: 'pie', 
 
       data: {
-        // values on X-Axis
         labels: countries,
         datasets: [
           {
@@ -48,7 +48,7 @@ export class ChartService {
             const firstPoint = points[0];
             const datapoint = firstPoint.index;
             this.countryName = this.pieChart.data.labels[datapoint];
-            this.router.navigateByUrl(`page/${this.countryName}`);
+            this.router.navigateByUrl(`detail/${this.countryName}`);
           }
         },
       },
