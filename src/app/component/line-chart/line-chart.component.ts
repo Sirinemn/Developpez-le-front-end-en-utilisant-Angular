@@ -46,7 +46,7 @@ export class LineChartComponent implements OnInit, OnDestroy {
       .subscribe((olympics) => {
         olympics
           .filter((olympic) => olympic.country === this.selectedCountry)
-          .map((x) => (this.finalCountry = x));
+          .map((country) => (this.finalCountry = country));
         let numbreMedalByYear = new Map();
         this.finalCountry.participations.map((participation) => {
           numbreMedalByYear.set(participation.year, participation.medalsCount);
