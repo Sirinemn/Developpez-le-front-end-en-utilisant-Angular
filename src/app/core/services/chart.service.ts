@@ -56,7 +56,7 @@ export class ChartService {
   }
 
   createLineChart(year: number[], medal: number[]) {
-    const linechart = new Chart('linechart', {
+     this.lineChart = new Chart('linechart', {
       type: 'line',
       data: {
         labels: year,

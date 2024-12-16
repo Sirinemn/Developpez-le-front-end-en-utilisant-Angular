@@ -1,30 +1,61 @@
-
-h2{
+/* Corps de la page avec fond noir et texte blanc */
+body {
+    background-color: #000;
+    color: #fff; /* Couleur du texte par défaut en blanc pour le contraste */
     font-family: "Olympic Sans", Arial, Helvetica, sans-serif;
-    font-size: 2.2rem;
-    line-height: 3.2rem;
-    margin: 0px 0px 1.6rem;
-}
-.rings{
-    width:100px;
+  }
+  
+  /* Style de l'en-tête */
+  header {
+    padding: 1rem;
+    border-bottom: 2px solid #fff; /* Légère bordure blanche pour séparer l'en-tête */
+    background-color: #222; /* Fond de l'en-tête en gris foncé pour le contraste */
+  }
+  
+  /* Style de la barre de navigation */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Style de l'image des anneaux olympiques */
+  .rings {
+    width: 100px;
     height: 50px;
-    float: right;
-}
-ul {
+    /* Ajoute une ombre blanche pour améliorer la visibilité */
+    filter: drop-shadow(0px 4px 6px rgba(255, 255, 255, 0.7));
+  }
+  
+  /* Style des éléments de liste de la barre de navigation */
+  ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
-
-}
-
-li a {
+  }
+  
+  /* Style des liens dans la barre de navigation */
+  li a {
     display: block;
-    color: rgba(10, 2, 2, 0.885);
+    color: #fff; /* Couleur blanche pour le texte du lien */
     text-align: center;
     padding: 15px;
     text-decoration: none;
-}
-li a:hover {
-    opacity: 50%;;
-}
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  
+  /* Style au survol des liens */
+  li a:hover {
+    opacity: 0.7; /* Opacité réduite au survol */
+    transform: scale(1.1); /* Légère mise à l'échelle pour effet de zoom */
+  }
+  
+  /* Style pour les titres */
+  h2 {
+    font-family: "Olympic Sans", Arial, Helvetica, sans-serif;
+    font-size: 2.2rem;
+    line-height: 3.2rem;
+    margin: 0px 0px 1.6rem;
+    color: #fff; /* Assure que le titre est en blanc */
+  }  
