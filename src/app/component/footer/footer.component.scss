@@ -1,17 +1,48 @@
+/* Style du footer */
 footer {
-    padding: 10px 20px;
-    background: #e1e1e1;
-    color: white;
+  padding: 20px;
+  background: #222; /* Fond gris foncé pour le contraste */
+  color: #fff; /* Texte en blanc pour la lisibilité */
+  display: flex; /* Utilisation de flexbox pour aligner les éléments */
+  justify-content: space-between; /* Aligne les éléments aux extrémités */
+  align-items: center; /* Centre verticalement les éléments */
+  border-top: 2px solid #fff; /* Bordure blanche pour séparer le footer du contenu principal */
+}
+
+/* Style des liens dans le footer */
+footer a {
+  color: #1e90ff; /* Couleur des liens en bleu pour les rendre visibles et distincts */
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #00bfff; /* Change la couleur des liens au survol pour plus d'interaction */
+}
+
+/* Style des paragraphes dans le footer */
+footer p {
+  color: #fff; /* Couleur du texte en blanc */
+  margin: 0;
+}
+
+/* Positionnement du texte de copyright */
+.nav {
+  margin-left: auto;
+  color: #fff; /* Couleur du texte en blanc */
+  font-size: 0.9rem;
+}
+
+/* Adaptation du footer pour les petits écrans */
+@media (max-width: 600px) {
+  footer {
+    flex-direction: column; /* Affiche les éléments en colonne sur les petits écrans */
+    text-align: center; /* Centre le texte sur les petits écrans */
   }
-  a{
-    text-decoration:none;
+  
+  .nav {
+    margin-left: 0;
+    margin-top: 10px; /* Ajoute une marge en haut pour séparer du lien */
+    font-size: 0.8rem;
   }
-  p{
-    color: black;
-  }
-  .nav{
-    position: relative;
-    bottom: 40px;
-    float: right;
-    color: black;
-  }
+}
